@@ -14,6 +14,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
+/**
+ * Dialog controller class for editing asciidoc files. Allows to save or cancel all modifications.
+ * @ToDo: Add "add to ignore list" functionality
+ * @author isi
+ *
+ */
 public class EditFileDialogController {
 
 	// reference to main application
