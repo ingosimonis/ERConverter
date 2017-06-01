@@ -99,7 +99,7 @@ public class ERViewController {
      * Called when the user clicks on erDirButton
      */
     @FXML
-    private void handleErDirButton() {
+    private void handleErDirButton() { 
     	DirectoryChooser dc = new DirectoryChooser();
     	dc.setTitle("Root Directory Selection");
     	String iniDir = prefs.get(ERConstants.ER_PATH, null);

@@ -277,3 +277,17 @@ toclevels
 Houtmeyers
 toolchain
 Houbie
+copyrightYear
+procurements
+Licensor
+sublicense
+NRCan
+Frédéric
+Lize
+Coenen
+Ingo
+Simonis
+IFrame
+Youtube
+overlayed
+Ecere
