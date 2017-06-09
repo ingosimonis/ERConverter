@@ -103,14 +103,13 @@ public class ERViewController {
     	DirectoryChooser dc = new DirectoryChooser();
     	dc.setTitle("Root Directory Selection");
     	String iniDir = prefs.get(ERConstants.ER_PATH, null);
-    	File f = new File(iniDir);
     	
-    	if(iniDir != null && f.exists()) {
-    			dc.setInitialDirectory(f);
-    	} else {
+    	// check if preferences contain information about initial directory
+    	if(iniDir == null) {
     		dc.setInitialDirectory(new File(System.getProperty("user.home")));
-    	}
-    	
+    	} else {
+    		dc.setInitialDirectory(new File(iniDir));
+    	}	
 
     	// set file to textField and add to preferences
     	File selectedDir = dc.showDialog(null);
@@ -130,13 +129,13 @@ public class ERViewController {
     private void handleErCompiledButton() {
     	DirectoryChooser dc = new DirectoryChooser();
     	dc.setTitle("Output Directory Selection");
-    	// to do -> move to preferences handling
-    	File f = new File(prefs.get(ERConstants.COMPILED_PATH, null));
-
-    	if(f != null && f.exists()) {
-    			dc.setInitialDirectory(f);
-    	} else {
+    	String iniDir = prefs.get(ERConstants.COMPILED_PATH, null);
+    	
+    	// check if preferences contain information about initial directory
+    	if(iniDir == null) {
     		dc.setInitialDirectory(new File(System.getProperty("user.home")));
+    	} else {
+    		dc.setInitialDirectory(new File(iniDir));
     	}
 
     	// set file to textField and add to preferences
