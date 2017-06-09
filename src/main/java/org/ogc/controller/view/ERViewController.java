@@ -108,7 +108,13 @@ public class ERViewController {
     	if(iniDir == null) {
     		dc.setInitialDirectory(new File(System.getProperty("user.home")));
     	} else {
-    		dc.setInitialDirectory(new File(iniDir));
+    		// check if iniDir exists
+    		File f = new File(iniDir);
+    		if(f.exists()) {
+    			dc.setInitialDirectory(new File(iniDir));
+    		} else {
+    			dc.setInitialDirectory(new File(System.getProperty("user.home")));
+    		}
     	}	
 
     	// set file to textField and add to preferences
@@ -135,8 +141,14 @@ public class ERViewController {
     	if(iniDir == null) {
     		dc.setInitialDirectory(new File(System.getProperty("user.home")));
     	} else {
-    		dc.setInitialDirectory(new File(iniDir));
-    	}
+    		// check if iniDir exists
+    		File f = new File(iniDir);
+    		if(f.exists()) {
+    			dc.setInitialDirectory(new File(iniDir));
+    		} else {
+    			dc.setInitialDirectory(new File(System.getProperty("user.home")));
+    		}
+    	}	
 
     	// set file to textField and add to preferences
     	File selectedDir = dc.showDialog(null);
