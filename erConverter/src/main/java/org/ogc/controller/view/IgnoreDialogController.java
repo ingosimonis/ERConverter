@@ -36,6 +36,8 @@ public class IgnoreDialogController {
 	@FXML
 	private Button fontsButton;
 	@FXML
+	private Button bibtexButton;
+	@FXML
 	private TextField ignoreTextField;
 	@FXML
 	private TextField magickTextField;
@@ -43,6 +45,8 @@ public class IgnoreDialogController {
 	private TextField ymlTextField;
 	@FXML
 	private TextField fontsTextField;
+	@FXML
+	private TextField bibtexTextField;
 
 	public IgnoreDialogController() {
 		this.prefs = Preferences.userNodeForPackage(ERViewController.class);
@@ -159,5 +163,22 @@ public class IgnoreDialogController {
     	fontsTextField.setText(file.getAbsolutePath());
     	prefs.put(ERConstants.FONTS_DIR, file.getAbsolutePath());
     }
-
+    
+    /**
+     * Called when the user clicks on magickButton
+     */
+    @FXML
+    private void handleBibTexButton() {
+    	FileChooser chooser = new FileChooser();
+    	chooser.setTitle("Bibtex File Chooser");
+    	chooser.setSelectedExtensionFilter(new ExtensionFilter("bibtex files (*.bibl)", "*.bib"));
+    	File file = chooser.showOpenDialog(null);
+    	try {
+			ignoreTextField.setText(file.getAbsolutePath());
+			prefs.put(ERConstants.BIB_FILE, file.getAbsolutePath());
+		} catch (Exception e) {
+			// case that no files was selected
+			prefs.put(ERConstants.BIB_FILE, "nill");
+		}
+    }
 }
