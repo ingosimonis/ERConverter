@@ -16,6 +16,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/** 
+ * Main class of the ERConverter
+ * @author ingosimonis
+ *
+ */
 public class ERMain extends Application {
 	
 	private Stage primaryStage;
