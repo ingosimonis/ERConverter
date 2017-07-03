@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ogc.controller.view.IgnoreDialogController">
+   <children>
+      <SplitPane dividerPositions="0.7964824120603015" orientation="VERTICAL" prefHeight="250.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="598.0">
+               <children>
+                  <GridPane layoutX="16.0" layoutY="14.0" prefHeight="165.0" prefWidth="566.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="279.0" minWidth="10.0" prefWidth="114.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="452.0" minWidth="10.0" prefWidth="452.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button fx:id="ignoreButton" mnemonicParsing="false" onAction="#handleIgnoreButton" prefWidth="100.0" text="Ignore File" />
+                        <Button fx:id="magickButton" mnemonicParsing="false" onAction="#handleMagickButton" text="ImageMagick" GridPane.rowIndex="1" />
+                        <Button fx:id="ymlButton" mnemonicParsing="false" onAction="#handleYMLButton" prefWidth="100.0" text="YML File" GridPane.rowIndex="2" />
+                        <TextField fx:id="ignoreTextField" prefHeight="27.0" prefWidth="463.0" GridPane.columnIndex="1" />
+                        <TextField fx:id="magickTextField" prefHeight="27.0" prefWidth="463.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="ymlTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Button fx:id="fontsButton" mnemonicParsing="false" onAction="#handleFontsButton" prefWidth="100.0" text="Fonts Dir" GridPane.rowIndex="3" />
+                        <TextField fx:id="fontsTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Button fx:id="bibtexButton" mnemonicParsing="false" onAction="#handleBibTexButton" prefWidth="100.0" text="Bibtex File" GridPane.rowIndex="4" />
+                        <TextField fx:id="bibtexTextField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <GridPane prefHeight="165.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button fx:id="saveButton" mnemonicParsing="false" onAction="#handleSaveButton" prefWidth="100.0" text="Save" GridPane.halignment="RIGHT" />
+                        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleCancelButton" prefWidth="100.0" text="Cancel" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                        <Button fx:id="showButton" mnemonicParsing="false" onAction="#handleShowButton" prefWidth="100.0" text="Show Ignore" GridPane.columnIndex="2" GridPane.halignment="LEFT" />
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
