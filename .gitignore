@@ -26,6 +26,9 @@ hs_err_pid*
 
 # Eclipse files
 *.project
+/org.eclipse.core.resources.prefs
+/org.eclipse.jdt.core.prefs
+/org.eclipse.m2e.core.prefs
 target/*
 
 # Mac files
