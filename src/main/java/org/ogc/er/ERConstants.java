@@ -9,6 +9,10 @@ public class ERConstants {
 	
 	public static final String IMAGE_MAGICK = "IMAGEMAGICK";
 	
+	// ignore dialog
+	public static final String NO_PATH_NO_DEFAULTS = "please specify path!";
+	public static final String NO_PATH_USE_DEFAULTS = "no path specified yet - use defaults";
+	
 	// ignore
 	public static final String DEFAULT_IGNORE = "resources/ignore.txt";
 	

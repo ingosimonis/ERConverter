@@ -27,6 +27,7 @@ import org.asciidoctor.SafeMode;
 import org.im4java.core.ConvertCmd;
 import org.im4java.core.IM4JavaException;
 import org.im4java.core.IMOperation;
+import org.ogc.controller.view.ERViewController;
 import org.ogc.io.ConsoleHandler;
 
 import x.ext.ImageInfo;
@@ -180,7 +181,7 @@ public class EngineeringReportFolder {
 				break;
 			}
 			case ERConstants.BACKEND_PDF: {
-				Preferences prefs = Preferences.userNodeForPackage(EngineeringReportFolder.class);
+				Preferences prefs = Preferences.userNodeForPackage(ERViewController.class);
 				String ogcTheme = prefs.get(ERConstants.THEME_FILE, ERConstants.DEFAULT_OGC_THEME);
 				String fontsDir = prefs.get(ERConstants.FONTS_DIR, ERConstants.DEFAULT_FONTS_DIR);
 				Attributes attributes = AttributesBuilder.attributes()

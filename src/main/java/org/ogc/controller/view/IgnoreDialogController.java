@@ -72,10 +72,10 @@ public class IgnoreDialogController {
      */
 	@FXML
 	private void initialize() {
-		this.ignoreTextField.setText(prefs.get(ERConstants.IGNORE_PATH, "path not specified yet"));
-		this.magickTextField.setText(prefs.get(ERConstants.IMAGE_MAGICK, "path not specified yet"));
-		this.ymlTextField.setText(prefs.get(ERConstants.THEME_FILE, "no path specified - use default"));
-		this.fontsTextField.setText(prefs.get(ERConstants.FONTS_DIR, "no path specified - use default"));
+		this.ignoreTextField.setText(prefs.get(ERConstants.IGNORE_PATH, ERConstants.NO_PATH_NO_DEFAULTS));
+		this.magickTextField.setText(prefs.get(ERConstants.IMAGE_MAGICK, ERConstants.NO_PATH_NO_DEFAULTS));
+		this.ymlTextField.setText(prefs.get(ERConstants.THEME_FILE, ERConstants.NO_PATH_USE_DEFAULTS));
+		this.fontsTextField.setText(prefs.get(ERConstants.FONTS_DIR, ERConstants.NO_PATH_USE_DEFAULTS));
 	}
 	
 	
@@ -84,10 +84,24 @@ public class IgnoreDialogController {
      */
     @FXML
     private void handleSaveButton() {
-    	prefs.put(ERConstants.IGNORE_PATH, ignoreTextField.getText());
-    	prefs.put(ERConstants.IMAGE_MAGICK, magickTextField.getText());
-    	prefs.put(ERConstants.THEME_FILE, ymlTextField.getText());
-    	prefs.put(ERConstants.FONTS_DIR, fontsTextField.getText());
+    	// check if values have been set. Otherwise don't set values, as checks against null happens in 
+    	// executeXYZ operations
+    	if(!ignoreTextField.getText().equalsIgnoreCase(ERConstants.NO_PATH_NO_DEFAULTS)) {
+    		prefs.put(ERConstants.IGNORE_PATH, ignoreTextField.getText());
+    	}
+    	
+    	if(!magickTextField.getText().equalsIgnoreCase(ERConstants.NO_PATH_NO_DEFAULTS)) {
+    		prefs.put(ERConstants.IMAGE_MAGICK, magickTextField.getText());
+    	}
+    	
+    	if(!ymlTextField.getText().equalsIgnoreCase(ERConstants.NO_PATH_USE_DEFAULTS)) {
+    		prefs.put(ERConstants.THEME_FILE, ymlTextField.getText());
+    	}
+    	
+    	if(!fontsTextField.getText().equalsIgnoreCase(ERConstants.NO_PATH_USE_DEFAULTS)) {
+    		prefs.put(ERConstants.FONTS_DIR, fontsTextField.getText());
+    	}
+    	
    	 	dialogStage.close();
     }
     
