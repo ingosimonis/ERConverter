@@ -158,7 +158,7 @@ public class IgnoreDialogController {
     	chooser.setTitle("Theme File Chooser");
     	chooser.setSelectedExtensionFilter(new ExtensionFilter("yml files (*.yml)", "*.yml"));
     	File file = chooser.showOpenDialog(null);
-    	ignoreTextField.setText(file.getAbsolutePath());
+    	ymlTextField.setText(file.getAbsolutePath());
     	prefs.put(ERConstants.THEME_FILE, file.getAbsolutePath());
     }
     
