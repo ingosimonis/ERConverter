@@ -5,11 +5,9 @@ package org.ogc.er;
 
 import static org.asciidoctor.Asciidoctor.Factory.create;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.RandomAccessFile;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
