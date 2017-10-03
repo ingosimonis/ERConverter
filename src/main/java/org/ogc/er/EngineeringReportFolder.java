@@ -5,9 +5,11 @@ package org.ogc.er;
 
 import static org.asciidoctor.Asciidoctor.Factory.create;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.RandomAccessFile;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
@@ -24,9 +26,7 @@ import org.asciidoctor.Attributes;
 import org.asciidoctor.AttributesBuilder;
 import org.asciidoctor.OptionsBuilder;
 import org.asciidoctor.SafeMode;
-import org.im4java.core.ConvertCmd;
-import org.im4java.core.IM4JavaException;
-import org.im4java.core.IMOperation;
+
 import org.ogc.controller.view.ERViewController;
 import org.ogc.io.ConsoleHandler;
 
@@ -339,32 +339,42 @@ public class EngineeringReportFolder {
 	 */
 	public boolean removePNGInterlace() {
 		
-		// set up the ImageMagick environment
-		ConvertCmd cmd = new ConvertCmd();
-		IMOperation op = new IMOperation();
-		op.addImage();
-		op.interlace("None");
-		op.addImage();
+		// create process 
+		Process p;
 		
-		// get and process all interlaced png image files
+		// check imagemagick settings
+		Preferences prefs = Preferences.userNodeForPackage(ERViewController.class);
+		String magick = prefs.get(ERConstants.IMAGE_MAGICK, "/usr/local/bin/magick");
+		
+//		StringBuffer output = new StringBuffer();
+		
+		// get all interlaced images
 		List<String> png = this.getInterlacedPNGs();
 		Iterator<String> iter = png.iterator();
+		
+		// remove interlace settings
 		while(iter.hasNext()) {
+			String interlacedImage = iter.next();
+			System.out.println(interlacedImage);
+			String[] command = { magick, "-interlace", "none", interlacedImage, interlacedImage };
+
 			try {
-				String s = iter.next();
-				// and execute the operation
-				cmd.run(op, s, s);
-			} catch (IOException e) {
-				e.printStackTrace();
-				return false;
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-				return false;
-			} catch (IM4JavaException e) {
+				// execute imagemagick command
+				p = Runtime.getRuntime().exec(command);
+				p.waitFor();
+				
+				// read results
+//				BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+//				String line = "";
+//				while ((line = reader.readLine())!= null) {
+//					output.append(line + "\n");
+//				}
+			} catch (Exception e) {
 				e.printStackTrace();
 				return false;
 			}
 		}
+//		System.out.println(output.toString());
 		return true;
 	}
 	

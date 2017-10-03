@@ -290,8 +290,13 @@ public class ERViewController {
         	String folder = erField.getText();
         	EngineeringReportFolder erf = new EngineeringReportFolder(new File(folder));
            
-        	erf.removePNGInterlace();
-        	resultArea.setText("All interleaved PNG files overwritten!");
+        	Boolean b = erf.removePNGInterlace();
+        	if(b) {
+        		resultArea.setText("All interleaved PNG files overwritten!");
+        	} else {
+        		resultArea.setText("Error handling PNG files. No files overwritten!");
+        	}
+        	
     	}
     }
     
